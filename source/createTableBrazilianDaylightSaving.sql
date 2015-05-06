@@ -1,0 +1,31 @@
+IF OBJECT_ID('MyDatabase.BrazilianDaylightSaving', 'U') IS NOT NULL
+  DROP TABLE MyDatabase.BrazilianDaylightSaving
+GO
+
+CREATE TABLE MyDatabase.BrazilianDaylightSaving
+(
+	[StartBR] datetime NOT NULL, 
+	[EndBR] datetime NOT NULL, 
+	[StartGMT] datetime NOT NULL, 
+	[EndGMT] datetime NOT NULL
+    CONSTRAINT PK_table PRIMARY KEY ([StartBR],[EndBR],[StartGMT],[EndGMT])
+)
+GO
+
+
+select * from MyDatabase.BrazilianDaylightSaving
+
+
+INSERT INTO MyDatabase.BrazilianDaylightSaving([StartBR], [EndBR], [StartGMT], [EndGMT])
+SELECT '2009-10-18', '2010-02-21', '2009-10-19 03:00:00.000', '2010-02-22 02:00:00.000'
+UNION ALL
+SELECT '2010-10-17', '2011-02-20', '2010-10-18 03:00:00.000', '2011-02-21 02:00:00.000'
+UNION ALL
+SELECT '2011-10-16', '2012-02-26', '2011-10-17 03:00:00.000', '2012-02-27 02:00:00.000'
+UNION ALL
+SELECT '2012-10-21', '2013-02-17', '2012-10-22 03:00:00.000', '2013-02-18 02:00:00.000'
+UNION ALL
+SELECT '2013-10-20', '2014-02-16', '2013-10-21 03:00:00.000', '2014-02-17 02:00:00.000'
+UNION ALL
+SELECT '2014-10-19', '2015-02-22', '2014-10-20 03:00:00.000', '2015-02-23 02:00:00.000'
+
